@@ -1,6 +1,6 @@
 # docker-instant-wp
 
- Docker local environment configuration for Wordpress + MySQL + phpMyAdmin
+ Docker local environment configuration for **Wordpress + MySQL + phpMyAdmin**
 
 
  The docker-compose.yml is used for local environment configuration of Docker containers. It specifies which image should Docker use for container, it configure connection between Wordpress and database and set-up volumes for persistent data.
