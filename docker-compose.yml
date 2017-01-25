@@ -1,18 +1,27 @@
 wordpress:
     image: wordpress
     links:
-     - mariadb:mysql
+      - mariadb:mysql
     environment:
-     - WORDPRESS_DB_PASSWORD=fddqs32
+      - WORDPRESS_DB_PASSWORD=fddqs32
     ports:
-     - "8000:80"
+      - "8000:80"
     volumes:
-     - ./code:/code
-     - ./wordpress:/var/www/html
+      - ./wordpress:/var/www/html
 mariadb:
     image: mariadb
     environment:
-     - MYSQL_ROOT_PASSWORD=fddqs32
-     - MYSQL_DATABASE=wordpress
+    - MYSQL_ROOT_PASSWORD=fddqs32
+    - MYSQL_DATABASE=wordpress
     volumes:
-     - ./database:/var/lib/mysql
+      - ./database:/var/lib/mysql
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mariadb:mysql
+    ports:
+      - "8181:80"
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=fddqs32
+      - PMA_HOST=mysql
