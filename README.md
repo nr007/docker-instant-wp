@@ -8,7 +8,7 @@
  Our environment will have 3 containers (wordpress, database, phpmyadmin). This is all we need to easily deploy finished website to production site. The changes in files are seen in our hosts folder and we can easily dump database and import it on production site.
 
 
- Check out whole article on how to setup your Docker local environment for Wordpress + MySQL + phpMyAdmin on medium
+ Check out whole article on how to setup your Docker local environment for Wordpress + MySQL + phpMyAdmin on [medium](https://medium.com/@nejcrodosek/instant-docker-local-environment-for-wordpress-3516d9dc10c8)
  ---
 
 
