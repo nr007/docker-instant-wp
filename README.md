@@ -14,8 +14,9 @@
 
  HOW TO START:
 
- Open terminal - navigate to project folder - run docker environment with: docker-compose up - that is it
+ Open terminal - navigate to project folder - run docker environment with: docker-compose up
 
+ After the docker-compose builded project you can run  php composer.phar install to install plugins.
 
  - website is at localhost:8080
  - phpMyAdmin is at localhost:8181

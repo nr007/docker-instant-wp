@@ -1,0 +1,21 @@
+{
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/contact-form-7":"*",
+        "wpackagist-plugin/wp-super-cache":"*",
+        "wpackagist-plugin/wp-optimize":"*",
+        "wpackagist-plugin/wordpress-seo":"*",
+        "wpackagist-plugin/wp-smushit":"*",
+        "wpackagist-plugin/wordfence":"*"
+    },
+    "extra": {
+        "installer-paths": {
+            "wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+        }
+    }
+}
