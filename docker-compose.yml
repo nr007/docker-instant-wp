@@ -1,29 +1,54 @@
-version: '3'
+version: '3.9'
+
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+
   wordpress:
-      image: wordpress
-      links:
-        - mariadb:mysql
-      environment:
-        - WORDPRESS_DB_PASSWORD=fddqs32
-      ports:
-        - "8000:80"
-      volumes:
-        - ./wordpress:/var/www/html
+    image: wordpress
+    ports:
+      - "8089:80"
+    depends_on:
+      - mariadb
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_PASSWORD: fddqs32
+      MAIL_HOST: mailhog
+      MAIL_PORT: 1025
+    volumes:
+      - ./wordpress:/var/www/html:cached
+    restart: unless-stopped
+
   mariadb:
-      image: mariadb
-      environment:
-      - MYSQL_ROOT_PASSWORD=fddqs32
-      - MYSQL_DATABASE=wordpress
-      volumes:
-        - ./database:/var/lib/mysql
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: fddqs32
+      MYSQL_DATABASE: wordpress
+    volumes:
+      - ./database:/var/lib/mysql
+    restart: unless-stopped
+
   phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      links:
-        - mariadb:mysql
-      ports:
-        - "8181:80"
-      environment:
-        - MYSQL_USERNAME=root
-        - MYSQL_ROOT_PASSWORD=fddqs32
-        - PMA_HOST=mysql
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mariadb
+    ports:
+      - "8181:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: fddqs32
+      PMA_HOST: mariadb
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web interface
+    restart: unless-stopped
