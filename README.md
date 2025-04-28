@@ -18,5 +18,5 @@
 
  After the docker-compose builded project you can run  php composer.phar install to install plugins.
 
- - website is at localhost:8080
+ - website is at localhost:8082
  - phpMyAdmin is at localhost:8181

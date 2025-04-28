@@ -17,5 +17,10 @@
         "installer-paths": {
             "wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
     }
 }
